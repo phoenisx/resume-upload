@@ -1,24 +1,34 @@
 'use strict';
 
 const multer = require('@koa/multer');
+const path = require('path');
 const Resumer = require('./resumer');
-const uploader = multer();
 
-const resumer = new Resumer('');
+const savePath = path.join(__dirname, '../../out');
 
-let counter = 0;
+const storage = multer.diskStorage({
+  destination: savePath,
+});
+const uploader = multer({
+  storage,
+});
+
+const resumer = new Resumer(savePath);
 
 const upload = async ctx => {
   const { file, body } = ctx.request;
+  try {
+    const status = await resumer.upload({
+      file,
+      body,
+    });
 
-  console.log('>>>>> Counter: ', ++counter);
-
-  const status = await resumer.upload({
-    files: [file],
-    body,
-  });
-
-  ctx.status = status;
+    ctx.body = '';
+    ctx.status = status;
+  } catch (e) {
+    ctx.body = e;
+    ctx.status = e;
+  }
 };
 
 module.exports = Router => {

@@ -14,7 +14,7 @@ function App() {
     chunkSize: 1*1024*1024,
     simultaneousUploads: 4,
     testChunks: false,
-    throttleProgressCallbacks: 1
+    throttleProgressCallbacks: 2
   } as unknown as any));
 
   const [state, updateState] = useImmer({
