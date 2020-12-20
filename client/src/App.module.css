@@ -1,0 +1,43 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  margin: 100px auto;
+}
+
+.resumableDrop {
+  padding: 15px;
+  font-size: 13px;
+  text-align: center;
+  color: #666;
+  font-weight: bold;
+  background-color: #eee;
+  border: 2px dashed #aaa;
+  border-radius: 10px;
+  margin-top: 40px;
+}
+
+.resumableProgress {
+  margin: 30px 0 30px 0;
+  width: 100%;
+}
+
+.progressContainer {
+  height: 7px;
+  background: #9CBD94;
+  position: relative;
+}
+.progressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: #45913A;
+  width: 0;
+}
+.progressText {
+  font-size: 11px;
+  line-height: 9px;
+  padding-left: 10px;
+}
